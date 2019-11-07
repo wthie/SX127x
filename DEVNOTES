@@ -27,12 +27,13 @@ TODO
 - implement bridging code which allows for the system to come up and
   connect to a WLAN and allow sensor nodes to hook themselves into an
   MQTT backend
-- publish the driver on github
 - SDR/gnuradio test of the sender side
 - LongRange radio field tests
-- 
+
 
 DONE
+- publish the driver on github, done on https://github.com/wthie/SX127x
+
 - driver was moved into the flashed image by linking the directory in
   drivers into modules. After having worked on the porting in RAM it was
   a relieve to see that the situation is now much less constrained and it
