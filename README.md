@@ -5,4 +5,4 @@ Please see the file DEVNOTES for further information!
 
 The board used for developing this code is a TTGO LoRa V1.1
 
-![TTGO LoRa V1.1](https://github.com/wthie/SX127x/TTGO-LoRaV1.1.jpg)
+![TTGO LoRa V1.1](https://github.com/wthie/SX127x/blob/master/TTGO-LoRaV1.1.jpg)
