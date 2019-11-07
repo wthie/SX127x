@@ -32,7 +32,7 @@ TODO
 
 
 DONE
-- publish the driver on github, done on https://github.com/wthie/SX127x
+- publish the driver on github, https://github.com/wthie/SX127x
 
 - driver was moved into the flashed image by linking the directory in
   drivers into modules. After having worked on the porting in RAM it was
