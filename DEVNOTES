@@ -1,0 +1,61 @@
+A Python level SPI driver for the Semtec LoRa SX127x family modules
+
+author    : wth, Werner Thie
+last edit : 07.11.2019
+modhistory:
+  07.11.2019 - wth, created
+
+Starting out from the project on
+
+https://github.com/rpsreal/pySX127x.git
+
+which was intended to be a pure Python level driver on the RPi for the
+SEMTEC 127x family connected via SPI, I decided to give it a shot and
+port the driver over to microPython on the ESP32. The driver is working
+and was left running for prolonged times (>24h) receiving data in one 
+second intervals. The code used for this non conclusive test is very 
+basic and does not allow for extrapolation, a lot more testing on the
+radio performance is needed, specially the sending sind which does not
+include energy budgets needs to be run against SDR/gnuradio.
+
+TODO
+- thorough testing and writing a lot more sender/receiver connected
+- embedding the start up such that the radio code is coming up on 
+  restart
+- testing AES encryption of transmissions
+- implementing and testing low power modes for CPU and radio
+- implement bridging code which allows for the system to come up and
+  connect to a WLAN and allow sensor nodes to hook themselves into an
+  MQTT backend
+- publish the driver on github
+- SDR/gnuradio test of the sender side
+- LongRange radio field tests
+- 
+
+DONE
+- driver was moved into the flashed image by linking the directory in
+  drivers into modules. After having worked on the porting in RAM it was
+  a relieve to see that the situation is now much less constrained and it
+  makes sense even on such a small CPU to keep things in Python, even
+  moe withe the original driver being more or less complete allowing for
+  cool rapid experimenting with LoRa transmission
+
+- rewrote all the funcs that perused locals() which is not present on
+  microPython
+
+- adapted quite a bit of functionality which is not present in general
+  on microPython, namely the __dict__ less implementation of the classes
+  in constants.py
+
+- wrote a tailor made xfer function for the SPI driver, mimicking the 
+  functionality in the RPi Python SPI module
+
+- diddled a long time with the SPI and its functionality, stalling on
+  too little documentation not only on the ESP32 side but also lack
+  thereof on the TTGo LORA V1.1 board. The documentation is now contained
+  in the board level definition file
+
+- I started to work with Thonny https://thonny.org/ a minimal IDE for
+  work done on remote system running a REPL. With this it became pretty
+  much straight forward to work locally on the flash storage of the ESP32
+  thus being blessed with a fast edit/run/test cycle
